@@ -12,10 +12,11 @@ module.exports = function(content, sourceMap) {
     var exports = [];
     var keys = Object.keys(query);
 
-    content = content.replace(/\/\/testIt([^f]*)function ([^\(]*)/gim, function(
+    content = content.replace(/\/\/testIt([^f]*)function ([^\(]*)/gim,  function(
         $0,
-        $2,
-        $1
+        $1,
+	    $2
+
     ) {
         var params = $2.replace(/\n/g, '');
         return `var old_${$1} = ${$1}; ${$1} = exports.${$1} = 
